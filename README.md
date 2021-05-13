@@ -85,6 +85,22 @@ To deal with OpenSSH Certificates, this project introduces a public key override
 
 If you want to work with OpenSSH certificates, you should put your OpenSSH Certificates in your `user profile` folder, rename them to `<Your Certificate Common Name>-cert.pub` or `<Your Certificate Serial Number>-cert.pub`.
 
+### Step-by-Step
+
+A comment from MrWyss on a blog post: https://www.hanselman.com/blog/how-to-set-up-a-tab-profile-in-windows-terminal-to-automatically-ssh-into-a-linux-box
+
+Found this https://github.com/buptczq/WinCryptSSHAgent gem by accident.
+- Never been easier to ssh with the yubikey.
+- Install it via choco choco install wincrypt-sshagent
+- you may have add user permissions to C:\ProgramData\chocolatey\lib\wincrypt-sshagent\tools\
+- add envvar SSH_AUTH_SOCK to \\.\pipe\openssh-ssh-agent
+- make sure ssh-agent service is not running.
+- create authcert with Yubikey Manager PIV, if not done already
+- re-connect key and then you should see the cert under Cert:\CurrentUser\My\
+- righclick the tray icon, show publickeys
+- add your pubkey to authorized_keys
+- ssh your machine and get a smart card prompt for you private key
+
 ### Contribute
 
 **Please use issues for everything**
